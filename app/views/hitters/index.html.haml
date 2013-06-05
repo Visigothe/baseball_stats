@@ -1,0 +1,33 @@
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th
+        .text-center YEAR
+      %th
+        .text-center NAME
+      %th
+        .text-center TEAM
+      %th
+        .text-center AVG
+      %th
+        .text-center HR
+      %th
+        .text-center RBI
+      %th
+        .text-center RUNS
+      %th
+        .text-center SB
+      %th
+        .text-center OPS
+  %tbody
+    - for n in (1..25) do
+      %tr{ id: "player_#{n}" }
+        %td{ id: "player_#{n}_year" }
+        %td{ id: "player_#{n}_name" }
+        %td{ id: "player_#{n}_team" }
+        %td{ id: "player_#{n}_avg" }
+        %td{ id: "player_#{n}_hr" }
+        %td{ id: "player_#{n}_rbi" }
+        %td{ id: "player_#{n}_runs" }
+        %td{ id: "player_#{n}_sb" }
+        %td{ id: "player_#{n}_ops" }
