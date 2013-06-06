@@ -20,9 +20,11 @@ describe Hitter do
 
     it { Hitter.should respond_to(:parse_xml) }
 
+    it 'creates a new instance of HitterParser'
+
     it 'destroys all previous hitter records' do
       hitter = create(:hitter)
-      another_hitter = create(:hitter)
+      another_hitter = build(:hitter)
       HitterParser.stub(:hitter).and_return(another_hitter)
       Hitter.parse_xml
       expect(Hitter.count).to eq 1
@@ -31,7 +33,6 @@ describe Hitter do
     it 'creates a database entry from records yielded by HitterParser' do
       hitter = build(:hitter)
       HitterParser.stub(:hitter).and_return(hitter)
-      Hitter.stub(:create!).and_return(true)
       expect(Hitter.parse_xml).to be_true
     end
   end
