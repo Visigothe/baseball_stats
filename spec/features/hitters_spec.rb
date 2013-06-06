@@ -59,7 +59,4 @@ describe 'Hitters' do
       end
     end
   end
-
-
-
 end
