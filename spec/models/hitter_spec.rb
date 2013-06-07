@@ -11,29 +11,66 @@ describe Hitter do
        pb walks struck_out hit_by_pitch avg ops
       ).each do |attribute|
       it { should have_db_column(attribute.to_sym) }
+      it { should_not allow_mass_assignment_of(attribute.to_sym) }
     end
 
     it { should be_valid }
   end
 
-  describe '#parse_xml' do
+  it { Hitter.should respond_to(:parse_xml) }
 
-    it { Hitter.should respond_to(:parse_xml) }
+  it '#parse_xml(url) destroys all previous hitter records' do
+    5.times { create(:hitter) }
+    xml = 'spec/support/statistics_no_player.xml'
+    Hitter.parse_xml(xml)
+    expect(Hitter.count).to eq 0
+  end
 
-    it 'creates a new instance of HitterParser'
+  describe "#parse_xml(url) uses HitterParser to parse data and" do
 
-    it 'destroys all previous hitter records' do
-      hitter = create(:hitter)
-      another_hitter = build(:hitter)
-      HitterParser.stub(:hitter).and_return(another_hitter)
-      Hitter.parse_xml
+    let(:xml) { 'spec/support/statistics_all_positions.xml' }
+
+    before(:all) { Hitter.parse_xml(xml) }
+
+    it 'create records for Catcher' do
+      xml = 'spec/support/statistics_catcher.xml'
+      Hitter.parse_xml(xml)
+      expect(Hitter.count).to eq 1
+    end
+    it 'create records for Frist Base' do
+      xml = 'spec/support/statistics_first_base.xml'
+      Hitter.parse_xml(xml)
       expect(Hitter.count).to eq 1
     end
 
-    it 'creates a database entry from records yielded by HitterParser' do
-      hitter = build(:hitter)
-      HitterParser.stub(:hitter).and_return(hitter)
-      expect(Hitter.parse_xml).to be_true
+    it 'create records for Second Base' do
+      xml = 'spec/support/statistics_second_base.xml'
+      Hitter.parse_xml(xml)
+      expect(Hitter.count).to eq 1
+    end
+
+    it 'create records for Third Base' do
+      xml = 'spec/support/statistics_third_base.xml'
+      Hitter.parse_xml(xml)
+      expect(Hitter.count).to eq 1
+    end
+
+    it 'create records for Outfield' do
+      xml = 'spec/support/statistics_outfield.xml'
+      Hitter.parse_xml(xml)
+      expect(Hitter.count).to eq 1
+    end
+
+    it 'does not create records for Starting Pitcher' do
+      xml = 'spec/support/statistics_starting_pitcher.xml'
+      Hitter.parse_xml(xml)
+      expect(Hitter.count).to eq 0
+    end
+
+    it 'does not create records for Relief Pitcher' do
+      xml = 'spec/support/statistics_relief_pitcher.xml'
+      Hitter.parse_xml(xml)
+      expect(Hitter.count).to eq 0
     end
   end
 end
