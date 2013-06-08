@@ -59,7 +59,7 @@ class HitterParser
         record[:obp] = calculate_obp(record) # Calculate and set obp
         record[:slg] = calculate_slg(record) # Calculate and set slg
         record[:ops] = calculate_ops(record) # Calculate and set ops
-        save_hitter(record)
+        Hitter.create_hitter_from_record(record)
       end
     end
   end
@@ -99,9 +99,5 @@ class HitterParser
 
   def calculate_ops(record)
     ops = (record[:obp] + record[:slg]).round(3)
-  end
-
-  def save_hitter(record)
-    Hitter.create{record}
   end
 end

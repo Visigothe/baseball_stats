@@ -11,7 +11,7 @@ describe Hitter do
        pb walks struck_out hit_by_pitch avg ops
       ).each do |attribute|
       it { should have_db_column(attribute.to_sym) }
-      it { should_not allow_mass_assignment_of(attribute.to_sym) }
+      it { should allow_mass_assignment_of(attribute.to_sym) }
     end
 
     it { should be_valid }
@@ -19,58 +19,56 @@ describe Hitter do
 
   it { Hitter.should respond_to(:parse_xml) }
 
-  it '#parse_xml(url) destroys all previous hitter records' do
+  specify '#parse_xml destroys all previous hitter records' do
     5.times { create(:hitter) }
-    xml = open('spec/support/statistics_no_player.xml')
-    Hitter.parse_xml(xml)
-    expect(Hitter.count).to eq 0
+    source = open('spec/support/statistics_1_player.xml')
+    Hitter.parse_xml(source)
+    expect(Hitter.count).to eq 1
   end
 
-  describe "#parse_xml(url) uses HitterParser to parse data and" do
+  describe "#parse_xml uses HitterParser to parse data and" do
 
-    let(:xml) { open('spec/support/statistics_all_positions.xml') }
+    let(:source) { open('spec/support/statistics_all_positions.xml') }
 
-    before(:all) { Hitter.parse_xml(xml) }
+    before(:all) { Hitter.parse_xml(source) }
 
     it 'create records for Catcher' do
-      xml = open('spec/support/statistics_catcher.xml')
-      Hitter.parse_xml(xml)
-      expect(Hitter.count).to eq 1
+      catchers = Hitter.find_all_by_position('Catcher')
+      expect(catchers.count).to eq 1
     end
     it 'create records for Frist Base' do
-      xml = open('spec/support/statistics_first_base.xml')
-      Hitter.parse_xml(xml)
-      expect(Hitter.count).to eq 1
+      first_base_men = Hitter.find_all_by_position('First Base')
+      expect(first_base_men.count).to eq 1
     end
 
     it 'create records for Second Base' do
-      xml = open('spec/support/statistics_second_base.xml')
-      Hitter.parse_xml(xml)
-      expect(Hitter.count).to eq 1
+      second_base_men = Hitter.find_all_by_position('Second Base')
+      expect(second_base_men.count).to eq 1
+    end
+
+    it 'creates records for Shortstop' do
+      shortstops = Hitter.find_all_by_position('Shortstop')
+      expect(shortstops.count).to eq 1
     end
 
     it 'create records for Third Base' do
-      xml = open('spec/support/statistics_third_base.xml')
-      Hitter.parse_xml(xml)
-      expect(Hitter.count).to eq 1
+      third_base_men = Hitter.find_all_by_position('Third Base')
+      expect(third_base_men.count).to eq 1
     end
 
     it 'create records for Outfield' do
-      xml = open('spec/support/statistics_outfield.xml')
-      Hitter.parse_xml(xml)
-      expect(Hitter.count).to eq 1
+      outfielders = Hitter.find_all_by_position('Outfield')
+      expect(outfielders.count).to eq 1
     end
 
     it 'does not create records for Starting Pitcher' do
-      xml = open('spec/support/statistics_starting_pitcher.xml')
-      Hitter.parse_xml(xml)
-      expect(Hitter.count).to eq 0
+      starting_pitchers = Hitter.find_all_by_position('Starting Pitcher')
+      expect(starting_pitchers.count).to eq 0
     end
 
     it 'does not create records for Relief Pitcher' do
-      xml = open('spec/support/statistics_relief_pitcher.xml')
-      Hitter.parse_xml(xml)
-      expect(Hitter.count).to eq 0
+      relief_pitchers = Hitter.find_all_by_position('Relief Pitcher')
+      expect(relief_pitchers.count).to eq 0
     end
   end
 end
