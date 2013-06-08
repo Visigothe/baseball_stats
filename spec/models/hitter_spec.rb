@@ -21,54 +21,54 @@ describe Hitter do
 
   it '#parse_xml(url) destroys all previous hitter records' do
     5.times { create(:hitter) }
-    xml = 'spec/support/statistics_no_player.xml'
+    xml = open('spec/support/statistics_no_player.xml')
     Hitter.parse_xml(xml)
     expect(Hitter.count).to eq 0
   end
 
   describe "#parse_xml(url) uses HitterParser to parse data and" do
 
-    let(:xml) { 'spec/support/statistics_all_positions.xml' }
+    let(:xml) { open('spec/support/statistics_all_positions.xml') }
 
     before(:all) { Hitter.parse_xml(xml) }
 
     it 'create records for Catcher' do
-      xml = 'spec/support/statistics_catcher.xml'
+      xml = open('spec/support/statistics_catcher.xml')
       Hitter.parse_xml(xml)
       expect(Hitter.count).to eq 1
     end
     it 'create records for Frist Base' do
-      xml = 'spec/support/statistics_first_base.xml'
+      xml = open('spec/support/statistics_first_base.xml')
       Hitter.parse_xml(xml)
       expect(Hitter.count).to eq 1
     end
 
     it 'create records for Second Base' do
-      xml = 'spec/support/statistics_second_base.xml'
+      xml = open('spec/support/statistics_second_base.xml')
       Hitter.parse_xml(xml)
       expect(Hitter.count).to eq 1
     end
 
     it 'create records for Third Base' do
-      xml = 'spec/support/statistics_third_base.xml'
+      xml = open('spec/support/statistics_third_base.xml')
       Hitter.parse_xml(xml)
       expect(Hitter.count).to eq 1
     end
 
     it 'create records for Outfield' do
-      xml = 'spec/support/statistics_outfield.xml'
+      xml = open('spec/support/statistics_outfield.xml')
       Hitter.parse_xml(xml)
       expect(Hitter.count).to eq 1
     end
 
     it 'does not create records for Starting Pitcher' do
-      xml = 'spec/support/statistics_starting_pitcher.xml'
+      xml = open('spec/support/statistics_starting_pitcher.xml')
       Hitter.parse_xml(xml)
       expect(Hitter.count).to eq 0
     end
 
     it 'does not create records for Relief Pitcher' do
-      xml = 'spec/support/statistics_relief_pitcher.xml'
+      xml = open('spec/support/statistics_relief_pitcher.xml')
       Hitter.parse_xml(xml)
       expect(Hitter.count).to eq 0
     end

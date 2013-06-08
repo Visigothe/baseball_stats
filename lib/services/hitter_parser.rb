@@ -1,10 +1,12 @@
 require 'open-uri'
+require 'nokogiri'
 
 class HitterParser
 
-  def initialize(url)
+  def initialize(source)
     # 'http://www.cafeconleche.org/examples/baseball/1998statistics.xml'
-    @data = Nokogiri::HTML(open(url))
+    @source = source
+    @data = Nokogiri::HTML(@source)
   end
 
   def hitters
