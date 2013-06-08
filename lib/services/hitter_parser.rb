@@ -82,19 +82,19 @@ class HitterParser
 
   def calculate_avg(record)
     total_hits = record[:hits] + record[:doubles] + record[:triples] + record[:home_runs]
-    avg = (total_hits.to_f/record[:at_bats]).round(3)
+    avg = record[:at_bats] == 0 ? 0 : (total_hits.to_f/record[:at_bats]).round(3)
   end
 
   def calculate_obp(record)
     total_hits = record[:hits] + record[:doubles] + record[:triples] + record[:home_runs]
     actual = total_hits + record[:walks] + record[:hit_by_pitch]
     opportunities = record[:at_bats] + record[:walks] + record[:hit_by_pitch] + record[:sacrifice_flies]
-    obp = (actual/opportunities.to_f).round(3)
+    obp = opportunities == 0 ? 0 : (actual.to_f/opportunities).round(3)
   end
 
   def calculate_slg(record)
     slugging = record[:hits] + 2*record[:doubles] + 3*record[:triples] + 4*record[:home_runs]
-    slg = (slugging.to_f/record[:at_bats]).round(3)
+    slg = record[:at_bats] == 0 ? 0 : (slugging.to_f/record[:at_bats]).round(3)
   end
 
   def calculate_ops(record)

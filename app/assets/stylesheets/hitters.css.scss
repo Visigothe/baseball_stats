@@ -2,6 +2,14 @@
 
 body {
   padding-top: 60px;
+
+  .icon-arrow-up#avg-asc, .icon-arrow-down#hr-desc, .icon-arrow-up#hr-asc, 
+  .icon-arrow-down#rbi-desc, .icon-arrow-up#rbi-asc, .icon-arrow-down#runs-desc, 
+  .icon-arrow-up#runs-asc, .icon-arrow-down#sb-desc, .icon-arrow-up#sb-asc, 
+  .icon-arrow-down#ops-desc, .icon-arrow-up#ops-asc {
+    display: none;
+  }
+
 }
 
 @import 'bootstrap-responsive';

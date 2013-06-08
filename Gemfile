@@ -6,11 +6,15 @@ gem 'thin'
 gem 'pg'
 gem 'haml'
 gem 'jquery-rails'
+gem 'bootstrap-sass'
+gem 'simple_form'
+gem 'bootstrap-will_paginate'
 
 # Authentication/Authorization
 gem 'devise'
 gem 'devise-encryptable'
 gem 'cancan'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -18,9 +22,6 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass'
-  gem 'simple_form'
-  gem 'bootstrap-will_paginate'
 end
 
 group :development, :test do

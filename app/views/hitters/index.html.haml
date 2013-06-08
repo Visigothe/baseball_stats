@@ -2,32 +2,82 @@
   %thead
     %tr
       %th
-        .text-center YEAR
+        .row-fluid.span12
+          .text-center Year
       %th
-        .text-center NAME
+        .row-fluid.span12
+          .text-center Name
       %th
-        .text-center TEAM
+        .row-fluid.span12
+          .text-center City
       %th
-        .text-center AVG
+        .row-fluid.span12
+          .text-center Team
       %th
-        .text-center HR
+        .row-fluid
+          .span8.offset2
+            %a
+              .text-center AVG
+          .span2
+            %i.icon-arrow-down#avg-desc
+            %i.icon-arrow-up#avg-asc
       %th
-        .text-center RBI
+        .row-fluid
+          .span8.offset2
+            %a
+              .text-center Home Runs
+          .span2
+            %i.icon-arrow-down#hr-desc
+            %i.icon-arrow-up#hr-asc
       %th
-        .text-center RUNS
+        .row-fluid
+          .span8.offset2
+            %a
+              .text-center RBI
+          .span2
+            %i.icon-arrow-down#rbi-desc
+            %i.icon-arrow-up#rbi-asc
       %th
-        .text-center SB
+        .row-fluid
+          .span8.offset2
+            %a
+              .text-center Runs
+          .span2
+            %i.icon-arrow-down#runs-desc
+            %i.icon-arrow-up#runs-asc
       %th
-        .text-center OPS
+        .row-fluid
+          .span8.offset2
+            %a
+              .text-center Steals
+          .span2
+            %i.icon-arrow-down#sb-desc
+            %i.icon-arrow-up#sb-asc
+      %th
+        .row-fluid
+          .span8.offset2
+            %a
+              .text-center OPS
+          .span2
+            %i.icon-arrow-down#ops-desc
+            %i.icon-arrow-up#ops-asc
   %tbody
-    - for n in (1..25) do
-      %tr{ id: "player_#{n}" }
-        %td{ id: "player_#{n}_year" }
-        %td{ id: "player_#{n}_name" }
-        %td{ id: "player_#{n}_team" }
-        %td{ id: "player_#{n}_avg" }
-        %td{ id: "player_#{n}_hr" }
-        %td{ id: "player_#{n}_rbi" }
-        %td{ id: "player_#{n}_runs" }
-        %td{ id: "player_#{n}_sb" }
-        %td{ id: "player_#{n}_ops" }
+    - @best_avg.each do |hitter|
+      %tr{ id: "hitter_#{hitter.id}" }
+        %td{ id: "hitter_#{hitter.id}_year" }
+          .text-center= hitter.year
+        %td{ id: "hitter_#{hitter.id}_name" }= hitter.full_name
+        %td{ id: "hitter_#{hitter.id}_city" }= hitter.team_city
+        %td{ id: "hitter_#{hitter.id}_team" }= hitter.team_name
+        %td{ id: "hitter_#{hitter.id}_avg" }
+          .text-center= hitter.avg
+        %td{ id: "hitter_#{hitter.id}_hr" }
+          .text-center= hitter.home_runs
+        %td{ id: "hitter_#{hitter.id}_rbi" }
+          .text-center= hitter.rbi
+        %td{ id: "hitter_#{hitter.id}_runs" }
+          .text-center= hitter.runs
+        %td{ id: "hitter_#{hitter.id}_sb" }
+          .text-center= hitter.steals
+        %td{ id: "hitter_#{hitter.id}_ops" }
+          .text-center= hitter.ops

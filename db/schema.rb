@@ -22,30 +22,30 @@ ActiveRecord::Schema.define(:version => 20130606000133) do
     t.string   "surname"
     t.string   "given_name"
     t.string   "position"
-    t.integer  "games"
-    t.integer  "games_started"
-    t.integer  "at_bats"
-    t.integer  "runs"
-    t.integer  "hits"
-    t.integer  "doubles"
-    t.integer  "triples"
-    t.integer  "home_runs"
-    t.integer  "rbi"
-    t.integer  "steals"
-    t.integer  "caught_stealing"
-    t.integer  "sacrifice_hits"
-    t.integer  "sacrifice_flies"
-    t.integer  "fielding_errors"
-    t.integer  "pb"
-    t.integer  "walks"
-    t.integer  "struck_out"
-    t.integer  "hit_by_pitch"
-    t.float    "avg"
-    t.float    "obp"
-    t.float    "slg"
-    t.float    "ops"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "games",           :default => 0
+    t.integer  "games_started",   :default => 0
+    t.integer  "at_bats",         :default => 0
+    t.integer  "runs",            :default => 0
+    t.integer  "hits",            :default => 0
+    t.integer  "doubles",         :default => 0
+    t.integer  "triples",         :default => 0
+    t.integer  "home_runs",       :default => 0
+    t.integer  "rbi",             :default => 0
+    t.integer  "steals",          :default => 0
+    t.integer  "caught_stealing", :default => 0
+    t.integer  "sacrifice_hits",  :default => 0
+    t.integer  "sacrifice_flies", :default => 0
+    t.integer  "fielding_errors", :default => 0
+    t.integer  "pb",              :default => 0
+    t.integer  "walks",           :default => 0
+    t.integer  "struck_out",      :default => 0
+    t.integer  "hit_by_pitch",    :default => 0
+    t.float    "avg",             :default => 0.0
+    t.float    "obp",             :default => 0.0
+    t.float    "slg",             :default => 0.0
+    t.float    "ops",             :default => 0.0
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
 end

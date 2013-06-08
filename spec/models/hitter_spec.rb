@@ -28,9 +28,7 @@ describe Hitter do
 
   describe "#parse_xml uses HitterParser to parse data and" do
 
-    let(:source) { open('spec/support/statistics_all_positions.xml') }
-
-    before(:all) { Hitter.parse_xml(source) }
+    before(:all) { Hitter.parse_xml(open('spec/support/statistics_all_positions.xml')) }
 
     it 'create records for Catcher' do
       catchers = Hitter.find_all_by_position('Catcher')
@@ -70,5 +68,11 @@ describe Hitter do
       relief_pitchers = Hitter.find_all_by_position('Relief Pitcher')
       expect(relief_pitchers.count).to eq 0
     end
+  end
+
+  specify '#full_name returns a full name' do
+    hitter = build(:hitter)
+    hitter_name = "#{hitter.given_name} #{hitter.surname}"
+    expect(hitter.full_name).to eq hitter_name
   end
 end

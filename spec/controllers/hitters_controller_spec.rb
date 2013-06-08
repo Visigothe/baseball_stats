@@ -9,22 +9,22 @@ describe HittersController do
       expect(response).to render_template('hitters/index')
     end
 
-    context 'assigns the 25 hitters with best' do
-      specify 'avg to @best_avg'
-      specify 'hr to @best_hr'
-      specify 'rbi to @best_rbi'
-      specify 'runs to @best_runs'
-      specify 'sb to @best_sb'
-      specify 'ops to @best_ops'
-    end
+    # it 'populates an array of hitters' do
+    #   hitter = create(:hitter)
+    #   get :index
+    #   expect(assigns(:hitters)).to eq [hitter]
+    # end
 
-    context 'assigns the 25 hitters with the worst' do
-      specify 'avg to @worst_avg'
-      specify 'hr to @worst_hr'
-      specify 'rbi to @worst_rbi'
-      specify 'runs to @worst_runs'
-      specify 'sb to @worst_sb'
-      specify 'ops to @worst_ops'
+    describe 'populates an array of hitters sorted by avg' do
+
+      let(:worst) { create(:hitter, avg: 0.111) }
+      let(:best) { create(:hitter, avg: 0.999) }
+      let(:average) { create(:hitter, avg: 0.555) }
+      
+      specify 'desc' do
+        get :index
+        expect(assigns(:best_avg)).to eq [best, average, worst]
+      end
     end
   end
 end

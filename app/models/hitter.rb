@@ -15,4 +15,8 @@ class Hitter < ActiveRecord::Base
   def self.create_hitter_from_record(record)
     self.new(record).save
   end
+
+  def full_name
+    "#{self.given_name} #{self.surname}"
+  end
 end
