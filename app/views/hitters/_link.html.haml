@@ -1,6 +1,0 @@
-- if css_class == 'inactive'
-  = link_to title, { sort: column, direction: direction }, { class: css_class, id: css_id }
-- else
-  = link_to({ sort: column, direction: direction }, { class: css_class, id: css_id }) do
-    = title
-    %i{ class: chevron }

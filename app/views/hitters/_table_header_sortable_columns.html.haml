@@ -1,0 +1,80 @@
+%th
+  .text-center
+    = sortable_column 'avg', 'AVG'
+    / %i.icon.icon-chevron-down.active#avg
+    / %i.icon.icon-chevron-up.inactive#avg
+%th
+  .text-center
+    = sortable_column 'home_runs', 'Home Runs'
+    / = render 'table_header_sortable_column_chevrons', id: 'home_runs'
+%th
+  .text-center
+    = sortable_column 'rbi', 'RBI'
+    / = render 'table_header_sortable_column_chevrons', id: 'rbi'
+%th
+  .text-center
+    = sortable_column 'runs'
+    / = render 'table_header_sortable_column_chevrons', id: 'runs'
+%th
+  .text-center
+    = sortable_column 'steals'
+    / = render 'table_header_sortable_column_chevrons', id: 'steals'
+%th
+  .text-center
+    = sortable_column 'ops', 'OPS'
+    / = render 'table_header_sortable_column_chevrons', id: 'ops'
+
+/ %th
+/   .text-center
+/     = link_to 'AVG', avg_desc_hitters_path, remote: true, class: 'head', id: 'avg'
+/     = link_to avg_asc_hitters_path, remote: true, class: 'desc active', id: 'avg' do
+/       AVG
+/       %i.icon.icon-chevron-down
+/     = link_to avg_desc_hitters_path, remote: true, class: 'asc', id: 'avg' do
+/       AVG
+/       %i.icon.icon-chevron-up
+/ %th
+/   .text-center
+/     = link_to 'Home Runs', hr_desc_hitters_path, remote: true, class: 'head', id: 'hr'
+/     = link_to hr_asc_hitters_path, remote: true, class: 'desc', id: 'hr' do
+/       Home Runs
+/       %i.icon.icon-chevron-down
+/     = link_to hr_desc_hitters_path, remote: true, class: 'asc', id: 'hr' do
+/       Home Runs
+/       %i.icon.icon-chevron-up
+/ %th
+/   .text-center
+/     = link_to 'RBI', rbi_desc_hitters_path, remote: true, class: 'head', id: 'rbi'
+/     = link_to rbi_asc_hitters_path, remote: true, class: 'desc', id: 'rbi' do
+/       RBI
+/       %i.icon.icon-chevron-down
+/     = link_to rbi_desc_hitters_path, remote: true, class: 'asc', id: 'rbi' do
+/       RBI
+/       %i.icon.icon-chevron-up
+/ %th
+/   .text-center
+/     = link_to 'Runs', runs_desc_hitters_path, remote: true, class: 'head', id: 'runs'
+/     = link_to runs_asc_hitters_path, remote: true, class: 'desc', id: 'runs' do
+/       Runs
+/       %i.icon.icon-chevron-down
+/     = link_to runs_desc_hitters_path, remote: true, class: 'asc', id: 'runs' do
+/       Runs
+/       %i.icon.icon-chevron-up
+/ %th
+/   .text-center
+/     = link_to 'Steals', sb_desc_hitters_path, remote: true, class: 'head', id: 'sb'
+/     = link_to sb_asc_hitters_path, remote: true, class: 'desc', id: 'sb' do
+/       Steals
+/       %i.icon.icon-chevron-down
+/     = link_to sb_desc_hitters_path, remote: true, class: 'asc', id: 'sb' do
+/       Steals
+/       %i.icon.icon-chevron-up
+/ %th
+/   .text-center
+/     = link_to 'OPS', ops_desc_hitters_path, remote: true, class: 'head', id: 'ops'
+/     = link_to ops_asc_hitters_path, remote: true, class: 'desc', id: 'ops' do
+/       OPS
+/       %i.icon.icon-chevron-down
+/     = link_to ops_desc_hitters_path, remote: true, class: 'asc', id: 'ops' do
+/       OPS
+/       %i.icon.icon-chevron-up
