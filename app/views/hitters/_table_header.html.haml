@@ -7,4 +7,21 @@
     .text-center City
   %th
     .text-center Team
-  = render 'hitters/table_header_sortable_columns'
+  %th
+    .text-center
+      = sortable_column 'avg', 'AVG'
+  %th
+    .text-center
+      = sortable_column 'home_runs', 'Home Runs'
+  %th
+    .text-center
+      = sortable_column 'rbi', 'RBI'
+  %th
+    .text-center
+      = sortable_column 'runs'
+  %th
+    .text-center
+      = sortable_column 'steals'
+  %th
+    .text-center
+      = sortable_column 'ops', 'OPS'

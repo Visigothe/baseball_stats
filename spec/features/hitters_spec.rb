@@ -39,7 +39,7 @@ describe 'Hitters' do
     within('thead') do
       [
         'Year', 'Name', 'City', 'Team', 'AVG', 
-        'Home Runs', 'RBI', 'Runs', 'Steals', 'OPS'
+        'HR', 'RBI', 'Runs', 'SB', 'OPS'
       ].each do |attribute|
         should have_selector('th', text: attribute)
       end
