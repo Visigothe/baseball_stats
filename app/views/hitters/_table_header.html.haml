@@ -7,15 +7,4 @@
     .text-center City
   %th
     .text-center Team
-  %th
-    = render 'hitters/sortable_column_header', head: 'AVG', id: 'avg'
-  %th
-    = render 'hitters/sortable_column_header', head: 'Home Runs', id: 'hr'
-  %th
-    = render 'hitters/sortable_column_header', head: 'RBI', id: 'rbi'
-  %th
-    = render 'hitters/sortable_column_header', head: 'Runs', id: 'runs'
-  %th
-    = render 'hitters/sortable_column_header', head: 'Steals', id: 'sb'
-  %th
-    = render 'hitters/sortable_column_header', head: 'OPS', id: 'ops'
+  = render 'hitters/table_header_sortable_columns'
