@@ -1,2 +1,5 @@
-#hitters
-  = render 'hitters'
+%table.table.table-striped.table-bordered
+  %thead
+    = render 'hitters/table_header'
+  %tbody
+    = render 'hitters/table_body', hitters: @hitters
