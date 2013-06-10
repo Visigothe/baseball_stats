@@ -1,0 +1,46 @@
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th
+        .text-center Year
+      %th
+        .text-center Name
+      %th
+        .text-center City
+      %th
+        .text-center Team
+      %th
+        .text-center= sortable_column 'avg', 'AVG'
+      %th
+        .text-center= sortable_column 'home_runs', 'Home Runs'
+      %th
+        .text-center= sortable_column 'rbi', 'RBI'
+      %th
+        .text-center= sortable_column 'runs'
+      %th
+        .text-center= sortable_column 'steals'
+      %th
+        .text-center= sortable_column 'ops', 'OPS'
+  %tbody
+    - @hitters.each do |hitter|
+      %tr{ id: "hitter_#{hitter.id}" }
+        %td{ id: "hitter_#{hitter.id}_year" }
+          .text-center= hitter.year
+        %td{ id: "hitter_#{hitter.id}_name" }
+          = hitter.full_name
+        %td{ id: "hitter_#{hitter.id}_city" }
+          = hitter.team_city
+        %td{ id: "hitter_#{hitter.id}_team" }
+          = hitter.team_name
+        %td{ id: "hitter_#{hitter.id}_avg" }
+          .text-center= hitter.avg
+        %td{ id: "hitter_#{hitter.id}_hr" }
+          .text-center= hitter.home_runs
+        %td{ id: "hitter_#{hitter.id}_rbi" }
+          .text-center= hitter.rbi
+        %td{ id: "hitter_#{hitter.id}_runs" }
+          .text-center= hitter.runs
+        %td{ id: "hitter_#{hitter.id}_sb" }
+          .text-center= hitter.steals
+        %td{ id: "hitter_#{hitter.id}_ops" }
+          .text-center= hitter.ops
