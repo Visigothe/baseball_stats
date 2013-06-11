@@ -175,6 +175,7 @@ DEPENDENCIES
   factory_girl_rails
   haml
   jquery-rails
+  nokogiri
   pg
   rails (= 3.2.13)
   rspec-rails

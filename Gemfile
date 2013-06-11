@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'bootstrap-will_paginate'
+gem 'nokogiri'
 
 # Authentication/Authorization
 gem 'devise'
